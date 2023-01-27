@@ -3,6 +3,7 @@ let inputB = document.getElementById('input-b');
 let form = document.getElementById('form-numero');
 
 
+
 function testeNumero(num1, num2) {
     return num2 > num1;
 }
@@ -11,7 +12,7 @@ form.addEventListener('submit', function(e) {
     
     e.preventDefault();
     
-    let formValido = testeNumero(inputA.value, inputB.value);
+    let formValido = testeNumero(parseInt(inputA.value), parseInt(inputB.value));
     let containerMensagem = document.querySelector('.mensagem');
 
     if (formValido) {
@@ -23,7 +24,17 @@ form.addEventListener('submit', function(e) {
         inputA.value = '';
         inputB.value = '';
 
-    } else {
+    }
+    
+    else if (parseInt(inputA.value) == parseInt(inputB.value)) {
+
+        containerMensagem.innerHTML = 'Os números são iguais.';
+        containerMensagem.style.display = 'block';
+        containerMensagem.style.backgroundColor = 'rgb(223, 220, 68)';
+        
+    } 
+    
+     else {
 
         containerMensagem.innerHTML = `Erro: O número ${inputA.value} é maior que ${inputB.value}.`;
         inputA.style.border = '1px solid red';
